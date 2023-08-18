@@ -7,7 +7,7 @@
 git clone https://github.com/bozkayasalihx/repartners-test-case.git
 ```
 
-## Usage 
+## API Usage 
 
 ```sh 
 curl -X POST http://159.65.241.100:3000/calculate 
@@ -24,7 +24,7 @@ curl -X POST http://159.65.241.100:3000/calculate
 ```
 
 
-## UI
+## UI Usage 
 * UI can accesable from `http://159.65.241.100:3000` this url
 ![screen shot](./screenshot.png?raw=true "UI screeshot")
 

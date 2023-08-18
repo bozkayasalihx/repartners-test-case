@@ -16,7 +16,7 @@ type JsonBody struct {
 func prettyPrint(values map[int]int) string {
 	var str string
 	for k, v := range values {
-		str += fmt.Sprintf("%d x %d", k, v)
+		str += fmt.Sprintf("%d x %d | ", k, v)
 	}
 	return str
 }

@@ -30,5 +30,4 @@ curl -X POST http://159.65.241.100:3000/calculate
 
 
 ## NOTE
-UI written in static HTML; therefore, please refresh the page after each subsequent request to see the most up-to-date views.
-
+UI written in static HTML; therefore, please refresh the page after each subsequent to remove previously inserted DOM Element

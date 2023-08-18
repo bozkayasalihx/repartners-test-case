@@ -4,13 +4,13 @@
 ## Getting Started
 
 ```sh
-git clone https://github.com/your-username/packaging-calculator.git
+git clone https://github.com/bozkayasalihx/repartners-test-case.git
 ```
 
 ## Usage 
 
 ```sh 
-curl -X POST https://reqbin.com/echo/post/json 
+curl -X POST http://159.65.241.100:3000/calculate 
    -H "Content-Type: application/json"
    -d '{ "pack_sizes": [250,500,1000,2000,5000],"ordered_packs": [251]'  
 ```
@@ -24,3 +24,10 @@ curl -X POST https://reqbin.com/echo/post/json
 ```
 
 
+## UI
+* UI can accesable from `http://159.65.241.100:3000` this url
+
+
+## NOTE
+UI written in static html for that reason please refresh the page after each subsuquent request to see most
+up to date views

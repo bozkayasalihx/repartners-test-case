@@ -12,7 +12,7 @@ import (
 func main() {
 	app := fiber.New()
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:3000",
+		AllowOrigins: "http://localhost:3000, http://159.65.241.100:3000",
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 	app.Static("/", "internal/web/static/index.html")

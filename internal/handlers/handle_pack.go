@@ -23,6 +23,7 @@ func prettyPrint(values map[int]int) string {
 
 func HandlePacks(c *fiber.Ctx) error {
 	c.Accepts("application/json")
+
 	jsonBody := new(JsonBody)
 	c.BodyParser(jsonBody)
 

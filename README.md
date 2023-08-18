@@ -9,10 +9,22 @@ git clone https://github.com/bozkayasalihx/repartners-test-case.git
 
 ## API Usage 
 
-```sh 
-curl -X POST http://159.65.241.100:3000/calculate 
-   -H "Content-Type: application/json"
-   -d '{ "pack_sizes": [250,500,1000,2000,5000],"ordered_packs": [251]'  
+```bash
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{
+    "pack_sizes": [
+      250,
+      500,
+      1000,
+      2000,
+      5000
+    ],
+    "ordered_packs": [
+      251
+    ]
+}' \
+  http://159.65.241.100:3000/calculate
 ```
 
 ## Response 

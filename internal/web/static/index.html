@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS Form</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: hsl(0, 0%, 98%);
+        color: #333;
+        font: 100% / normal sans-serif;
+      }
+      button[type="submit"] {
+        background-color: hsl(213, 73%, 50%);
+        color: white;
+      }
+
+      main {
+        margin: 0 auto;
+        padding: 4rem 0;
+        width: 90%;
+        max-width: 60rem;
+      }
+
+      form {
+        box-sizing: border-box;
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: hsl(0, 0%, 100%);
+        border: 4px solid hsl(0, 0%, 90%);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        font: 1.25rem / 1.5 sans-serif;
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .full-width {
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form onsubmit="return handleSubmit(event)">
+        <div>
+          <label for="defaultpacks">Default Pack Sizes</label>
+          <input id="defaultpacks" type="text" / value="[250,500,1000,2000,5000]">
+        </div>
+        <div>
+          <label for="orderpacks">Will Order Packs</label>
+          <input id="orderpacks" type="text" />
+        </div>
+        <div class="full-width">
+          <button type="submit">Send Response</button>
+        </div>
+
+        <div class="full-width" id="content">
+           
+        </div> 
+      </form>
+    </main>
+    <script>
+      function handleSubmit(event) {
+      event.preventDefault(); // Prevent the form from submitting traditionally
+
+      const defaultPackInput = document.getElementById('defaultpacks');
+      const orderPackInput = document.getElementById('orderpacks');
+
+      const data = {
+        pack_sizes: JSON.parse(defaultPackInput.value),
+        ordered_packs: JSON.parse(orderPackInput.value)
+      };
+      /*
+      {
+        "pack_sizes": [
+          250,
+          1000,
+          2000,
+          5000
+        ],
+        "ordered_packs": [
+          251,
+          501
+        ]
+      }
+      */
+
+      if (data.ordered_packs.length == 0) {
+        alert("please enter valid values"); 
+      }
+      sendDataToBackend(data);
+
+      return false; // Prevent any further default actions
+    }
+
+    function sendDataToBackend(data) {
+      const apiUrl = 'http://127.0.0.1:3000/calculate';
+
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(responseData => {
+        // Handle the response from the backend if needed
+        const para = document.createElement("p");
+        const node = document.createTextNode(JSON.stringify(responseData, null, 4));
+        para.appendChild(node);
+        const element = document.getElementById("content");
+        element.appendChild(para);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error:', error);
+      });
+    }
+    </script>
+  </body>
+</html>

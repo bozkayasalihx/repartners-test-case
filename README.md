@@ -29,5 +29,5 @@ curl -X POST http://159.65.241.100:3000/calculate
 ![screen shot](./screenshot.png?raw=true "UI screeshot")
 
 
-## NOTE
+## ⚠️  Warning ⚠️  
 UI written in static HTML; therefore, please refresh the page after each subsequent to remove previously inserted DOM Element
